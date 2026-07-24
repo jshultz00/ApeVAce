@@ -138,17 +138,17 @@ public class planeController : MonoBehaviour {
             if (curVel > maxSpeed) { curVel = maxSpeed; } else if (curVel < 0) { curVel = 0; }
 
             // Add velocity to the rigid body velocity
-            planeBody.velocity = curVel * transform.forward;
+            planeBody.linearVelocity = curVel * transform.forward;
 
             // makes the rotation speed a factor of the velocity of the plane. Slower plane = slower turns
-            float speedBasedRotationFactor = 10 * planeBody.velocity.magnitude / 10;
+            float speedBasedRotationFactor = 10 * planeBody.linearVelocity.magnitude / 10;
 
             // Applies the distance from the origin to the rotation of the plane. Further from origin = faster rotation
             transform.Rotate(joystickInteractablePosition.x * speedBasedRotationFactor * Time.deltaTime * new Vector3(0, 0, 1));
             transform.Rotate(joystickInteractablePosition.z * speedBasedRotationFactor * Time.deltaTime * new Vector3(-1, 0, 0));
 
             // animates the propellor as a function of velocity.
-            propellor.Rotate(planeBody.velocity.magnitude * 10, 0, 0);
+            propellor.Rotate(planeBody.linearVelocity.magnitude * 10, 0, 0);
 
             //If the heat exceeds maxheat, wait until heat reaches zero again before they can fire
 
@@ -166,7 +166,7 @@ public class planeController : MonoBehaviour {
 
             // Updating our lil dials! Would be better to put this stuff in its own script, but then I'd have to make 2 more scripts and I don't like the bloat. So I'll bloat here!
             heatometer.localEulerAngles = new Vector3(heatometer.localEulerAngles.x, 180 - curHeat * maxHeat * 180f, heatometer.localEulerAngles.z);
-            speedometer.localEulerAngles = new Vector3(speedometer.localEulerAngles.x, 180 - planeBody.velocity.magnitude * maxSpeed / 2.13f, speedometer.localEulerAngles.z);
+            speedometer.localEulerAngles = new Vector3(speedometer.localEulerAngles.x, 180 - planeBody.linearVelocity.magnitude * maxSpeed / 2.13f, speedometer.localEulerAngles.z);
 
 
             // No time to do this properly, so just throwin the respawn code in here. The timer wont update right unless in update()
@@ -241,11 +241,11 @@ public class planeController : MonoBehaviour {
         }
 
         // Makes the engine volume a function of speed.
-        planeEngineSource.volume = planeBody.velocity.magnitude / 20;
+        planeEngineSource.volume = planeBody.linearVelocity.magnitude / 20;
 
         // Make wind sound a function of speed, but only above a certain speed
-        planeWindSource.volume = planeBody.velocity.magnitude / 10 - .5f;
-        planeWindSource.pitch = planeBody.velocity.magnitude / 10;
+        planeWindSource.volume = planeBody.linearVelocity.magnitude / 10 - .5f;
+        planeWindSource.pitch = planeBody.linearVelocity.magnitude / 10;
     }
 
     private void OnCollisionEnter(Collision collision) {

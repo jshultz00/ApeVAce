@@ -13,14 +13,14 @@ public class ProjectileScript : MonoBehaviour
     public int impactDamage;
 
     public float lifetime;
-    PhysicMaterial physmat;
+    PhysicsMaterial physmat;
 
     //creates a physics material with given properties and applies it to the projectile.
     private void Setmat()
     {
-        physmat = new PhysicMaterial();
-        physmat.frictionCombine = PhysicMaterialCombine.Minimum;
-        physmat.bounceCombine = PhysicMaterialCombine.Maximum;
+        physmat = new PhysicsMaterial();
+        physmat.frictionCombine = PhysicsMaterialCombine.Minimum;
+        physmat.bounceCombine = PhysicsMaterialCombine.Maximum;
         GetComponent<SphereCollider>().material = physmat;
     }
 

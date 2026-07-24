@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class MonkeyBehavior : MonoBehaviour
 {
@@ -27,8 +27,8 @@ public class MonkeyBehavior : MonoBehaviour
     private int health;
     private float healthPercentage;
 
-    IXRInteractor inactiveController;
-    IXRInteractor curController;
+    UnityEngine.XR.Interaction.Toolkit.Interactors.IXRInteractor inactiveController;
+    UnityEngine.XR.Interaction.Toolkit.Interactors.IXRInteractor curController;
 
     //Vectors to determine velocity
     Vector3 prevPos = Vector3.zero;
@@ -97,7 +97,7 @@ public class MonkeyBehavior : MonoBehaviour
     }
 
     //Function that gets called by ledges when grabbed. Gives context information.
-    public void ledgeGrabbed(IXRInteractor controller)
+    public void ledgeGrabbed(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRInteractor controller)
     {
         handCount++;
         if (handCount == 2)
@@ -110,7 +110,7 @@ public class MonkeyBehavior : MonoBehaviour
         ledgeHeld = true;
     }
 
-    public void releaseReset(IXRInteractor controller)
+    public void releaseReset(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRInteractor controller)
     {
         handCount--;
         prevPos = Vector3.zero;

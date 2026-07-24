@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Network Start.unity
+    guid: f6d46d51ef157574495230bb69db3b97
+  - enabled: 1
+    path: Assets/Scenes/Plane.unity
+    guid: bfbf30ed7459bc94ba21759c9e7db02d
+  - enabled: 1
+    path: Assets/Scenes/Monkey Victory.unity
+    guid: 8db28d27ec6735c48b00c81fd13b0456
+  - enabled: 1
+    path: Assets/Scenes/Plane Victory.unity
+    guid: 6db36d56254407b4fa2311714afd407f
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 83d92c203cfda3c46adf81fb69fc7af3, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 54725884ae6247041bbbc4ef13a6f96f, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 6d7bfcfbe5b10424b9899f939314a054, type: 2}
